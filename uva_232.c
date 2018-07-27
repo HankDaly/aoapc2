@@ -6,7 +6,7 @@
 
 //printf("Time used = %.2f\n",(double)clock()/CLOCKS_PER_SEC)
 
-#define maxn 15
+#define maxn 100
 
 
 
