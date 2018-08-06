@@ -25,7 +25,7 @@ int main()
         int y_ch,x_ch,s,y,x;
         int star = 0; //star用来起始格计数
         y_ch = getchar();
-        if(y_ch == '0'){break;} //如果y是0则退出
+        if(y_ch == '0'){printf("\n");break;} //如果y是0则退出
         y = y_ch - '0';
         for(;(x_ch = getchar()) == ' ';){};
         x = x_ch - '0';

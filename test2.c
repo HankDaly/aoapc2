@@ -3,10 +3,8 @@
 #include <stdio.h>
 #define MAXN 100 + 5
 
-int main(){
-    int s;
-    scanf("%d",&s);
-    printf("%3d",s);
 
+int main(){
+    printf("%d",'F'-'A');
     return 0;
 }
