@@ -7,15 +7,25 @@
 #include<vector>
 #include<set>
 #include<map>
+#include<math.h>
 
 using namespace std;
 #define MAXN 100 
 
 
+
 int main(){
-    map<vector<int>,int> aaa;
-    vector<int> qqq = {1,2,3,4};
-    aaa[qqq] = 1;
-    cout << aaa[qqq] << endl;
+#ifdef LOCAL
+    freopen("input.in","r",stdin);
+    freopen("output.out","w",stdout);
+#endif
+
+    string ans; int n;
+    cin >> ans >> n;
+    string s,d;
+    getline(cin, s);
+    getline(cin,d);
+    cout << s << endl;
+    cout << d << endl;
     return 0;
 }
