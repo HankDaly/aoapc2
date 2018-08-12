@@ -12,20 +12,17 @@
 using namespace std;
 #define MAXN 100 
 
-
+vector<int> q;
+void udef(vector<int>& q,int n){
+    q.push_back(n);
+}
 
 int main(){
 #ifdef LOCAL
     freopen("input.in","r",stdin);
     freopen("output.out","w",stdout);
 #endif
-
-    string ans; int n;
-    cin >> ans >> n;
-    string s,d;
-    getline(cin, s);
-    getline(cin,d);
-    cout << s << endl;
-    cout << d << endl;
-    return 0;
+    int n = 2;
+    udef(q,n);
+    cout<< q[0] << endl;
 }
