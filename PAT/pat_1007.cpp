@@ -23,7 +23,7 @@ int main()
         int ok = 1;
         if(i == 2){} //一开始ve里没有素数的时候,添加最小素数，也就是二。
         else{
-            for(auto be = ve.begin();be!=ve.end() && (*be) <= (i/2);be++){
+            for(auto be = ve.begin();be!=ve.end() && (*be)*(*be) <= i;be++){
                 if(i%(*be) == 0){ok = 0;}
             }
         }
