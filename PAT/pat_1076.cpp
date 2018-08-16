@@ -7,26 +7,28 @@
 #include<map>
 #include<cstring>
 #include<math.h>
-#include<cstdio>
+#include<string.h>
 
 using namespace std;
-int ch[100005];
+
+char ch[] = {'A','B','C','D'};
+
 int main()
 {  
 #ifdef LOCAL
     freopen("input.in","r",stdin);
     freopen("output.out","w",stdout);
 #endif
-    memset(ch,0,sizeof(ch));
-    int a,maxn = 0,maxn_i = 0; 
+    int a = 0;
     cin >> a;
-    int b,c;
     for(int i = 0;i<a;i++){
-        cin >> b >> c;
-        ch[b] += c;
-        if(ch[b] > maxn){maxn = ch[b];maxn_i = b;}
+        string s_1,s_2,s_3,s_4;
+        cin >> s_1 >> s_2 >> s_3 >> s_4;
+        if(s_1[2] == 'T'){cout << (s_1[0]-'A')+1;}
+        else if(s_2[2] == 'T'){cout << (s_2[0] - 'A') +1;}
+        else if(s_3[2] == 'T'){cout << (s_3[0] - 'A') +1;}
+        else{cout << (s_4[0] - 'A') +1;}
     }
-    cout << maxn_i << " " << ch[maxn_i];
     return 0;
 }
     
