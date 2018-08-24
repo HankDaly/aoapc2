@@ -7,8 +7,7 @@
 #include<algorithm>
 
 using namespace std;
-double ch[100005];
-
+double temp;
 main(){
 #ifdef LOCAL
     freopen("input.in","r",stdin);
@@ -17,8 +16,8 @@ main(){
     int N; cin >> N;
     double sum = 0.0;
     for(int i = 1;i<=N;i++){
-        cin >> ch[i];
-        sum += (N-i+1)*ch[i]*i;
+        cin >> temp;
+        sum += (N-i+1)*temp*i;
     }
     printf("%.2f\n",sum);
     return 0;

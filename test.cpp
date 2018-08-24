@@ -1,22 +1,20 @@
-#include<cstdio>
 #include<iostream>
-#include<string>
-#include<cstring>
-#include<cctype>
 #include<cmath>
-#include<algorithm>
-#include<vector>
+#include<cstdio>
 
 using namespace std;
-vector<int> ve;
 main(){
 #ifdef LOCAL
     freopen("input.in","r",stdin);
     freopen("output.out","w",stdout);
 #endif
-
-    ve.push_back(1);
-    cout << *ve.begin();
-       
+    int N; cin >> N;
+    double max = 0.00;
+    for(int i = 0;i<N;i++){
+        int shi,xu; cin >> shi >> xu;
+        double a = sqrt(shi*shi+xu*xu);
+        if(a>=max){max = a;}
+    }
+    printf("%.2lf",max);
     return 0;
 }
