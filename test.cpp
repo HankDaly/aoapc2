@@ -1,20 +1,34 @@
 #include<iostream>
-#include<cmath>
+#include<string>
+#include<cstring>
+#include<algorithm>
+#include<cctype>
 #include<cstdio>
-
+#include<vector>
+#include<cmath>
 using namespace std;
+long ch[100005];
+vector<long> ve;
 main(){
 #ifdef LOCAL
     freopen("input.in","r",stdin);
     freopen("output.out","w",stdout);
 #endif
     int N; cin >> N;
-    double max = 0.00;
+    long p; cin >> p;
+    int max = 0;
     for(int i = 0;i<N;i++){
-        int shi,xu; cin >> shi >> xu;
-        double a = sqrt(shi*shi+xu*xu);
-        if(a>=max){max = a;}
+        long temp; cin >> temp;
+        ch[temp] = 1;
+        ve.push_back(temp);
     }
-    printf("%.2lf",max);
+    for(int i = 0;i<N;i++){
+        int cnt = 0;
+        for(int z = ve[i];z<ve[i]*p;z++){
+            if(ch[z] == 1){cnt++;}
+        }
+        if(cnt >= max){max = cnt;}
+    }
+    cout << max;
     return 0;
 }
