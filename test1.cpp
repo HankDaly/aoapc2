@@ -1,119 +1,54 @@
-// Copyright [2018] <mituh>
-// 1034. 有理数四则运算(20).cpp
-// 四则运算
-#include <cstdio>
-#include <cmath>
+#include<iostream>
+#include<string>
+#include<algorithm>
 using namespace std;
-struct Fraction {
-  // Fraction(int a, int b) {
-  //   up = a; down = b;
-  // }
-  Fraction(int a = 0, int b = 0) : up(a), down(b) {}
-  int up, down;
-};
-
-int gcd(int a, int b) {
-  return !b ? a : gcd(b, a % b);
-}
-
-int rabs(int a) {
-  return a = a < 0 ? -a : a;
-}
-
-void reduction(Fraction &f) {
-  if (f.down == 0) return;
-  if (f.up<0 || f.down<0){
-    f.up = -rabs(f.up); f.down = rabs(f.down);
-  } else if (f.up == 0) {
-    f.down = 1;
-  }
-
-  int g = gcd(rabs(f.up), f.down);
-  g = rabs(g);
-  f.up /= g; f.down /= g;
-
-}
-
-Fraction add(Fraction f1, Fraction f2) {
-  Fraction nf(f1.up*f2.down + f2.up*f1.down,
-              f1.down*f2.down);
-  reduction(nf);
-  return nf;
-}
-
-Fraction minus(Fraction f1, Fraction f2) {
-  Fraction nf(f1.up * f2.down - f2.up * f1.down,
-              f1.down * f2.down);
-  reduction(nf);
-  return nf;
-}
-
-Fraction multi(Fraction f1, Fraction f2) {
-  Fraction nf(f1.up * f2.up,
-              f1.down * f2.down);
-  reduction(nf);
-  return nf;
-}
-
-Fraction divide(Fraction f1, Fraction f2) {
-  Fraction nf(f1.up * f2.down,
-              f2.up * f1.down);
-  reduction(nf);
-  return nf;
-}
-
-void print_fraction(Fraction f_rst) {
-  if (f_rst.down == 0) {
-    printf("Inf");
-  } else {
-    if (f_rst.up == 0) {
-      printf("0"); return;
-    }
-    if (rabs(f_rst.up) >= f_rst.down) {
-      int a = rabs(f_rst.up) / f_rst.down;
-      int b = rabs(f_rst.up) - f_rst.down * a;
-      if(b == 0){
-          if(f_rst.up < 0){
-              printf("(-%d)",a);
-          }
-          else{printf("%d",a);}
-      }
-      else if (f_rst.up < 0) {
-        printf("(-%d %d/%d)", a, b, f_rst.down);
-      } else {
-        printf("%d %d/%d", a, b, f_rst.down);
-      }
-    } 
-    else {
-      if (f_rst.up < 0) {
-        printf("(%d/%d)", f_rst.up, f_rst.down);
-      } else {
-        printf("%d/%d", f_rst.up, f_rst.down);
-      }
-    }
-  }
-}
-
-void print_f1f2(Fraction f1, char op, Fraction f2) {
-  print_fraction(f1); printf(" %c ", op);
-  print_fraction(f2); printf(" = ");
-}
-
-
-int main() {
+int main()
+{
 #ifdef LOCAL
     freopen("input.in","r",stdin);
     freopen("output.out","w",stdout);
 #endif
-  char str1[30], str2[30];
-  scanf("%s %s", str1, str2);
-  int up1, down1, up2, down2;
-  sscanf(str1, "%d/%d", &up1, &down1);
-  sscanf(str2, "%d/%d", &up2, &down2);
-  Fraction f1(up1, down1), f2(up2, down2);
-  print_f1f2(f1, '+', f2); print_fraction(add(f1, f2));     printf("\n");
-  print_f1f2(f1, '-', f2); print_fraction(minus(f1, f2));   printf("\n");
-  print_f1f2(f1, '*', f2); print_fraction(multi(f1, f2));   printf("\n");
-  print_f1f2(f1, '/', f2); print_fraction(divide(f1, f2));  printf("\n");
-  return 0;
+  
+	string one[13] = { "tret" ,"jan", "feb", "mar","apr","may", "jun", "jly","aug", "sep", "oct", "nov","dec" },
+		two[13] = { "tret","tam", "hel", "maa", "huh", "tou", "kes", "hei", "elo", "syy", "lok", "mer", "jou" };
+	int n, sum = 0,res;
+	string m;
+	cin >> n;
+	getchar();    //清除缓存（之前的回车键）
+	while (n--) {
+		getline(cin, m);
+		if (isdigit(m[0])) {        //地球->火星
+			res = atoi(m.c_str());	
+			if (res/13)
+				cout << two[res/13];
+			if (res / 13 && res % 13)
+				cout << " "<< one[res % 13];
+			if (!(res/13))
+				cout << one[res % 13];
+			cout << endl;
+		}
+		else {                    //火星->地球
+			for (int i = 0; i < 13; i++) {
+				if (m.substr(m.length() - 3,m.length()) == one[i]) {
+					sum += i;
+					break;
+				}			
+				else if (m.substr(m.length() - 3, m.length()) == two[i]) {
+					sum += (i*13);
+					break;
+				}
+			}
+			if (m.length() > 4) {
+				for (int i = 0; i < 13; i++) {
+					if (m.substr(0, 3) == two[i]) {
+						sum += i * 13;
+						break;
+					}
+				}
+			}
+			cout << sum << endl;
+			sum = 0;
+		}
+	}
+	return 0;
 }
