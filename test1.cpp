@@ -5,7 +5,6 @@
 #include<cstdio>
 using namespace std;
 
-int hah[10] = {1,2,3,4};
 
 int main()
 {
@@ -13,7 +12,9 @@ int main()
     freopen("input.in","r",stdin);
     freopen("output.out","w",stdout);
 #endif 
+    char a[10];
+    scanf("%s",a);
+    cout << a;
 
-    cout << hah[1];
 	return 0;
 }
