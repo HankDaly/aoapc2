@@ -10,7 +10,7 @@ using namespace std;
 
 BiNode* Search_SmallestK(BiNode* bt,int k){
     int right;
-    if(bt->right == NULL){left = 0;}
+    if(bt->right == NULL){right = 0;}
     else{right = bt->right->count;}
     int now = bt->count - right;
     //判断是否是K
