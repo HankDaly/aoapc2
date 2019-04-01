@@ -16,8 +16,9 @@ BiNode* Search_SmallestK(BiNode* bt,int k){
     //判断是否是K
     if(now == k){return bt;}
     //如果当前大于k
-    else if(now > k){bt->left->count = now-2;return Search_SmallestK(bt->left,k);}
-    else{bt->right->count = bt->count+1;return Search_SmallestK(bt->right,k);}
+    else if(now > k){return Search_SmallestK(bt->left,k);}
+    //如果小于K,修改k
+    else{return Search_SmallestK(bt->right,k-now);}
 }
 
 int main(){
